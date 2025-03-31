@@ -17,4 +17,12 @@ describe("String Calculator", () => {
     expect(add("1,2,3")).toBe(6);
     expect(add("1,2,3,4")).toBe(10);
   });
+
+  test("should return the sum of numbers with new lines", () => {
+    expect(add("1\n2,3")).toBe(6);
+    expect(add("1\n2\n3")).toBe(6);
+  });
+  test("should fail for invalid input string", () => {
+    expect(add("1,\n")).toBe(0);
+  });
 });

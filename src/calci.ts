@@ -6,7 +6,10 @@ function add(numbers: string): number {
     return parseInt(numbers);
   }
   if (numbers.length > 1) {
-    const numArray = numbers.split(",").map((num) => parseInt(num));
+    const numArray = numbers.split(/[\n,]/).map((num) => parseInt(num));
+    if (numArray.some((num) => isNaN(num))) {
+      return 0;
+    }
     return numArray.reduce((acc, curr) => acc + curr, 0);
   }
 
