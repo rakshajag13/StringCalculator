@@ -18,6 +18,15 @@ function add(numbers: string): number {
   if (negativeNumbers) {
     throw new Error(`negatives not allowed: ${negativeNumbers.join(", ")}`);
   }
+
+  // Check for numbers greater than 1000
+  const numbersGreaterThan1000 = numString.match(/\d{4,}/g);
+
+  if (numbersGreaterThan1000) {
+    numbersGreaterThan1000.forEach((num) => {
+      numString = numString.replace(num, "0");
+    });
+  }
   const numArray = numString.split(delimiter).map((num) => parseInt(num));
   if (numArray.some((num) => isNaN(num))) {
     return 0;
