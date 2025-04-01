@@ -30,4 +30,9 @@ describe("String Calculator", () => {
   test("should handle custom delimiters", () => {
     expect(add("//;\n1;2")).toBe(3);
   });
+
+  test("should throw an error for negative numbers", () => {
+    expect(() => add("-1,2")).toThrow("negatives not allowed: -1");
+    expect(() => add("//;\n-1;-2")).toThrow("negatives not allowed: -1, -2");
+  });
 });

@@ -13,6 +13,11 @@ function add(numbers: string): number {
     numString = numbers.substring(delimiterEndIndex + 1);
   }
 
+  //check for negative numbers
+  const negativeNumbers = numString.match(/-\d+/g);
+  if (negativeNumbers) {
+    throw new Error(`negatives not allowed: ${negativeNumbers.join(", ")}`);
+  }
   const numArray = numString.split(delimiter).map((num) => parseInt(num));
   if (numArray.some((num) => isNaN(num))) {
     return 0;
